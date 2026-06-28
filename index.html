@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astha &amp; Neel — Wedding Invitation</title>
+  <meta name="description" content="Join us in celebrating the wedding of Astha &amp; Neel">
+  <meta name="theme-color" content="#FDF6EC">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================================================
+       CURTAIN OVERLAY
+       The first thing users see. Click "Open Invitation"
+       to reveal the wedding page behind it.
+  ==================================================== -->
+  <div id="curtain-overlay" role="dialog" aria-modal="true" aria-label="Wedding invitation">
+
+    <!-- Left curtain panel -->
+    <div class="curtain curtain-left" aria-hidden="true"></div>
+
+    <!-- Right curtain panel -->
+    <div class="curtain curtain-right" aria-hidden="true"></div>
+
+    <!-- Center content sitting on top of curtains -->
+    <div class="curtain-content">
+      <!-- Decorative ornament -->
+      <div class="curtain-ornament" aria-hidden="true">
+        <svg viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="70" cy="25" r="7" stroke="rgba(253,246,236,0.6)" stroke-width="1.2"/>
+          <circle cx="70" cy="25" r="2.5" fill="rgba(253,246,236,0.6)"/>
+          <ellipse cx="70" cy="15" rx="3" ry="6" fill="rgba(244,194,194,0.5)"/>
+          <ellipse cx="70" cy="35" rx="3" ry="6" fill="rgba(244,194,194,0.5)"/>
+          <ellipse cx="60" cy="25" rx="6" ry="3" fill="rgba(244,194,194,0.5)"/>
+          <ellipse cx="80" cy="25" rx="6" ry="3" fill="rgba(244,194,194,0.5)"/>
+          <line x1="10" y1="25" x2="58" y2="25" stroke="rgba(253,246,236,0.4)" stroke-width="0.8"/>
+          <line x1="82" y1="25" x2="130" y2="25" stroke="rgba(253,246,236,0.4)" stroke-width="0.8"/>
+          <polygon points="10,25 14,22 18,25 14,28" fill="rgba(253,246,236,0.4)"/>
+          <polygon points="130,25 126,22 122,25 126,28" fill="rgba(253,246,236,0.4)"/>
+          <circle cx="30" cy="25" r="3" stroke="rgba(253,246,236,0.3)" stroke-width="0.8" fill="none"/>
+          <circle cx="110" cy="25" r="3" stroke="rgba(253,246,236,0.3)" stroke-width="0.8" fill="none"/>
+        </svg>
+      </div>
+
+      <p class="curtain-tagline">Together with their families</p>
+      <h1 class="curtain-names">Astha &amp; Neel</h1>
+      <div class="curtain-rule" aria-hidden="true"></div>
+      <!-- [WEDDING_DATE_PLACEHOLDER] — Update this date -->
+      <p class="curtain-date">February 14, 2027</p>
+
+      <button id="open-invitation-btn" aria-label="Open the wedding invitation">
+        Open Invitation
+      </button>
+    </div>
+  </div><!-- end #curtain-overlay -->
+
+
+  <!-- ===================================================
+       MAIN CONTENT
+       Hidden behind the curtain; revealed on open.
+  ==================================================== -->
+  <div id="main-content" aria-hidden="true">
+
+    <!-- ── NAVIGATION ── -->
+    <nav id="main-nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="#hero" class="nav-logo" aria-label="Return to top">A &amp; N</a>
+
+        <button class="hamburger" id="hamburger-btn"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-links-list">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links-list" role="list">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#details">Details</a></li>
+          <li><a href="#schedule">Day Of</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#rsvp" class="nav-rsvp">RSVP</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- ── HERO SECTION ── -->
+    <section id="hero" aria-label="Hero">
+
+      <!-- Rose petal animation container (populated by script.js) -->
+      <div class="petals-container" aria-hidden="true" id="petals-container"></div>
+
+      <div class="hero-content">
+        <p class="hero-tagline animate-in">Together with their families</p>
+        <h1 class="hero-names animate-in">Astha <span class="amp">&amp;</span> Neel</h1>
+        <div class="hero-rule animate-in" aria-hidden="true"></div>
+        <p class="hero-subtitle animate-in">
+          Joyfully invite you to celebrate their wedding
+        </p>
+
+        <!-- Live countdown to wedding date -->
+        <div class="countdown animate-in" aria-label="Countdown to the wedding">
+          <div class="cd-unit">
+            <span class="cd-number" id="cd-days">--</span>
+            <span class="cd-label">Days</span>
+          </div>
+          <div class="cd-sep" aria-hidden="true">·</div>
+          <div class="cd-unit">
+            <span class="cd-number" id="cd-hours">--</span>
+            <span class="cd-label">Hours</span>
+          </div>
+          <div class="cd-sep" aria-hidden="true">·</div>
+          <div class="cd-unit">
+            <span class="cd-number" id="cd-minutes">--</span>
+            <span class="cd-label">Minutes</span>
+          </div>
+          <div class="cd-sep" aria-hidden="true">·</div>
+          <div class="cd-unit">
+            <span class="cd-number" id="cd-seconds">--</span>
+            <span class="cd-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator arrow -->
+      <a href="#story" class="scroll-arrow" aria-label="Scroll to Our Story">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </section><!-- end #hero -->
+
+
+    <!-- ── OUR STORY ── -->
+    <section id="story" aria-label="Our Story">
+      <div class="section-wrap">
+
+        <!-- Floral SVG ornament -->
+        <div class="floral-ornament" aria-hidden="true">
+          <svg viewBox="0 0 260 72" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <!-- Central rose -->
+            <circle cx="130" cy="36" r="11" stroke="#C9A84C" stroke-width="1.2"/>
+            <circle cx="130" cy="36" r="5" stroke="#C9A84C" stroke-width="0.8"/>
+            <circle cx="130" cy="36" r="2" fill="#C9A84C"/>
+            <ellipse cx="130" cy="22" rx="4" ry="9" fill="#F4C2C2" opacity="0.75"/>
+            <ellipse cx="130" cy="50" rx="4" ry="9" fill="#F4C2C2" opacity="0.75"/>
+            <ellipse cx="116" cy="36" rx="9" ry="4" fill="#F4C2C2" opacity="0.75"/>
+            <ellipse cx="144" cy="36" rx="9" ry="4" fill="#F4C2C2" opacity="0.75"/>
+            <ellipse cx="120" cy="26" rx="4.5" ry="8" fill="#F4C2C2" opacity="0.55" transform="rotate(45 120 26)"/>
+            <ellipse cx="140" cy="26" rx="4.5" ry="8" fill="#F4C2C2" opacity="0.55" transform="rotate(-45 140 26)"/>
+            <ellipse cx="120" cy="46" rx="4.5" ry="8" fill="#F4C2C2" opacity="0.55" transform="rotate(-45 120 46)"/>
+            <ellipse cx="140" cy="46" rx="4.5" ry="8" fill="#F4C2C2" opacity="0.55" transform="rotate(45 140 46)"/>
+            <!-- Left branch -->
+            <path d="M116 36 Q98 30 82 33 Q68 36 52 31" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M82 33 Q79 23 75 17" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round"/>
+            <path d="M62 32 Q59 22 54 16" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round"/>
+            <ellipse cx="75" cy="17" rx="6" ry="3" fill="#C9A84C" opacity="0.45" transform="rotate(-35 75 17)"/>
+            <ellipse cx="54" cy="16" rx="5.5" ry="2.5" fill="#C9A84C" opacity="0.45" transform="rotate(-45 54 16)"/>
+            <ellipse cx="52" cy="31" rx="6" ry="2.5" fill="#C9A84C" opacity="0.45" transform="rotate(8 52 31)"/>
+            <!-- Left small flower -->
+            <circle cx="36" cy="29" r="5.5" stroke="#C9A84C" stroke-width="0.9" opacity="0.65"/>
+            <circle cx="36" cy="29" r="2" fill="#C9A84C" opacity="0.55"/>
+            <ellipse cx="36" cy="21" rx="2.5" ry="5.5" fill="#F4C2C2" opacity="0.5"/>
+            <ellipse cx="36" cy="37" rx="2.5" ry="5.5" fill="#F4C2C2" opacity="0.5"/>
+            <ellipse cx="28" cy="29" rx="5.5" ry="2.5" fill="#F4C2C2" opacity="0.5"/>
+            <ellipse cx="44" cy="29" rx="5.5" ry="2.5" fill="#F4C2C2" opacity="0.5"/>
+            <!-- Right branch (mirror) -->
+            <path d="M144 36 Q162 30 178 33 Q192 36 208 31" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M178 33 Q181 23 185 17" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round"/>
+            <path d="M198 32 Q201 22 206 16" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round"/>
+            <ellipse cx="185" cy="17" rx="6" ry="3" fill="#C9A84C" opacity="0.45" transform="rotate(35 185 17)"/>
+            <ellipse cx="206" cy="16" rx="5.5" ry="2.5" fill="#C9A84C" opacity="0.45" transform="rotate(45 206 16)"/>
+            <ellipse cx="208" cy="31" rx="6" ry="2.5" fill="#C9A84C" opacity="0.45" transform="rotate(-8 208 31)"/>
+            <!-- Right small flower -->
+            <circle cx="224" cy="29" r="5.5" stroke="#C9A84C" stroke-width="0.9" opacity="0.65"/>
+            <circle cx="224" cy="29" r="2" fill="#C9A84C" opacity="0.55"/>
+            <ellipse cx="224" cy="21" rx="2.5" ry="5.5" fill="#F4C2C2" opacity="0.5"/>
+            <ellipse cx="224" cy="37" rx="2.5" ry="5.5" fill="#F4C2C2" opacity="0.5"/>
+            <ellipse cx="216" cy="29" rx="5.5" ry="2.5" fill="#F4C2C2" opacity="0.5"/>
+            <ellipse cx="232" cy="29" rx="5.5" ry="2.5" fill="#F4C2C2" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <p class="section-label reveal">Our Story</p>
+        <h2 class="section-heading reveal">A Love Worth Celebrating</h2>
+        <div class="gold-rule reveal" aria-hidden="true"></div>
+
+        <!-- [CUSTOMIZE THIS TEXT] Replace with your actual love story -->
+        <div class="story-body reveal">
+          <p>
+            Astha and Neel met in college and have been inseparable ever since.
+            What started as a friendship blossomed into a love story neither of them
+            had planned — and one they wouldn't trade for anything. Years later, they're
+            ready to begin the greatest chapter of their lives together.
+          </p>
+        </div>
+
+      </div>
+    </section><!-- end #story -->
+
+
+    <!-- ── WEDDING DETAILS ── -->
+    <section id="details" aria-label="Wedding Details">
+      <div class="section-wrap">
+        <p class="section-label reveal">The Celebration</p>
+        <h2 class="section-heading reveal">Join Us</h2>
+        <div class="gold-rule reveal" aria-hidden="true"></div>
+
+        <div class="details-grid">
+
+          <!-- Date card -->
+          <div class="detail-card reveal">
+            <div class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+            </div>
+            <h3 class="detail-card-label">Date</h3>
+            <!-- [WEDDING_DATE_PLACEHOLDER] — Update this -->
+            <p class="detail-card-value">February 14, 2027</p>
+            <p class="detail-card-sub">Saturday</p>
+          </div>
+
+          <!-- Time card -->
+          <div class="detail-card reveal">
+            <div class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3.5 3.5"/>
+              </svg>
+            </div>
+            <h3 class="detail-card-label">Time</h3>
+            <!-- [WEDDING_TIME_PLACEHOLDER] — Update this -->
+            <p class="detail-card-value">5:00 PM</p>
+            <p class="detail-card-sub">Doors open at 4:00 PM</p>
+          </div>
+
+          <!-- Venue card -->
+          <div class="detail-card reveal">
+            <div class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+            <h3 class="detail-card-label">Venue</h3>
+            <!-- [VENUE_NAME_PLACEHOLDER] — Update this -->
+            <p class="detail-card-value">The Grand Ballroom</p>
+            <!-- [VENUE_ADDRESS_PLACEHOLDER] — Update this -->
+            <p class="detail-card-sub">123 Celebration Lane, Mumbai, India</p>
+            <!-- [GOOGLE_MAPS_LINK_PLACEHOLDER] — Replace # with your Google Maps URL -->
+            <a href="#" class="directions-btn" target="_blank" rel="noopener noreferrer"
+               aria-label="Get directions to the venue on Google Maps">
+              Get Directions
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- end #details -->
+
+
+    <!-- ── SCHEDULE / TIMELINE ── -->
+    <section id="schedule" aria-label="Day-of Schedule">
+      <div class="section-wrap">
+        <p class="section-label reveal">Day Of</p>
+        <h2 class="section-heading reveal">The Day's Events</h2>
+        <div class="gold-rule reveal" aria-hidden="true"></div>
+
+        <!-- [CUSTOMIZE] Adjust times and descriptions below -->
+        <ol class="timeline" aria-label="Wedding day timeline">
+
+          <li class="tl-item reveal-left">
+            <div class="tl-time">4:00 PM</div>
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-body">
+              <h3>Guest Arrival &amp; Welcome</h3>
+              <p>Join us as we welcome our dearest guests</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal-right">
+            <div class="tl-time">5:00 PM</div>
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-body">
+              <h3>Wedding Ceremony</h3>
+              <p>The sacred union of Astha &amp; Neel</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal-left">
+            <div class="tl-time">6:30 PM</div>
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-body">
+              <h3>Cocktail Hour</h3>
+              <p>Drinks, canapés, and conversation</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal-right">
+            <div class="tl-time">7:30 PM</div>
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-body">
+              <h3>Reception &amp; Dinner</h3>
+              <p>An evening of fine dining and heartfelt toasts</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal-left">
+            <div class="tl-time">10:00 PM</div>
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-body">
+              <h3>Dancing &amp; Celebration</h3>
+              <p>Let the festivities begin — dance the night away</p>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section><!-- end #schedule -->
+
+
+    <!-- ── GALLERY ── -->
+    <section id="gallery" aria-label="Photo Gallery">
+      <div class="section-wrap" style="padding-bottom: 32px;">
+        <p class="section-label reveal">Our Moments</p>
+        <h2 class="section-heading reveal">Together in Photos</h2>
+        <div class="gold-rule reveal" aria-hidden="true"></div>
+      </div>
+
+      <!--
+        NOTE: Replace the picsum.photos URLs below with your own couple photos.
+        Recommended size: 1200×800px or similar 3:2 landscape ratio.
+      -->
+      <div class="carousel-outer reveal">
+        <button class="carousel-btn carousel-prev" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+
+        <div class="carousel-window" role="region" aria-label="Wedding photo carousel">
+          <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide">
+              <img src="https://picsum.photos/seed/asthaneelwed1/1200/800"
+                   alt="Astha and Neel — Photo 1" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+              <img src="https://picsum.photos/seed/asthaneelwed2/1200/800"
+                   alt="Astha and Neel — Photo 2" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+              <img src="https://picsum.photos/seed/asthaneelwed3/1200/800"
+                   alt="Astha and Neel — Photo 3" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+              <img src="https://picsum.photos/seed/asthaneelwed4/1200/800"
+                   alt="Astha and Neel — Photo 4" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+              <img src="https://picsum.photos/seed/asthaneelwed5/1200/800"
+                   alt="Astha and Neel — Photo 5" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn carousel-next" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Gallery navigation"></div>
+    </section><!-- end #gallery -->
+
+
+    <!-- ── RSVP ── -->
+    <section id="rsvp" aria-label="RSVP">
+      <div class="section-wrap">
+        <p class="section-label reveal">Will You Join Us?</p>
+        <h2 class="section-heading reveal">RSVP</h2>
+        <div class="gold-rule reveal" aria-hidden="true"></div>
+
+        <!-- [CUSTOMIZE] Update RSVP deadline -->
+        <p class="rsvp-intro reveal">Kindly respond by <strong>January 1, 2027</strong></p>
+
+        <form class="rsvp-form reveal" id="rsvp-form" novalidate aria-label="RSVP form">
+
+          <div class="form-row">
+            <label class="form-label" for="guest-name">Full Name</label>
+            <input type="text" id="guest-name" name="name"
+                   placeholder="Your full name"
+                   required aria-required="true"
+                   autocomplete="name">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label">Will you be attending?</label>
+            <div class="attend-toggle" role="group" aria-label="Attendance selection">
+              <label class="toggle-pill">
+                <input type="radio" name="attending" value="yes" required aria-required="true">
+                <span>Joyfully Accept</span>
+              </label>
+              <label class="toggle-pill">
+                <input type="radio" name="attending" value="no">
+                <span>Regretfully Decline</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row" id="guests-row">
+            <label class="form-label" for="num-guests">Number of Guests</label>
+            <input type="number" id="num-guests" name="guests"
+                   min="1" max="5" value="1"
+                   aria-label="Number of guests (maximum 5)">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="guest-message">Message to the Couple</label>
+            <textarea id="guest-message" name="message"
+                      placeholder="Share your wishes with us…"
+                      rows="4"
+                      aria-label="Optional message to the couple"></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <span class="btn-label">Send RSVP</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+
+        </form>
+
+        <!-- Success state -->
+        <div class="rsvp-success" id="rsvp-success"
+             role="alert" aria-live="polite" aria-hidden="true">
+          <div class="success-icon" aria-hidden="true">✨</div>
+          <h3>We can't wait to celebrate with you!</h3>
+          <p>Your RSVP has been received. We'll be in touch with more details soon.</p>
+        </div>
+
+        <!-- Error state -->
+        <div class="rsvp-error" id="rsvp-error"
+             role="alert" aria-live="polite" aria-hidden="true">
+          <p>Something went wrong. Please try again or reach out to us directly.</p>
+        </div>
+
+      </div>
+    </section><!-- end #rsvp -->
+
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+      <div class="footer-ornament" aria-hidden="true">
+        <svg viewBox="0 0 90 32" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="45" cy="16" r="6" stroke="rgba(201,168,76,0.45)" stroke-width="1"/>
+          <circle cx="45" cy="16" r="2" fill="rgba(201,168,76,0.45)"/>
+          <line x1="6" y1="16" x2="36" y2="16" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+          <line x1="54" y1="16" x2="84" y2="16" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+          <polygon points="6,16 10,13 14,16 10,19" fill="rgba(201,168,76,0.3)"/>
+          <polygon points="84,16 80,13 76,16 80,19" fill="rgba(201,168,76,0.3)"/>
+        </svg>
+      </div>
+      <p class="footer-names">Astha &amp; Neel</p>
+      <!-- [WEDDING_DATE_PLACEHOLDER] — Update this -->
+      <p class="footer-date">February 14, 2027</p>
+      <p class="footer-tagline">With love and gratitude</p>
+      <div class="footer-rule" aria-hidden="true"></div>
+      <p class="footer-copy">&copy; 2027 Astha &amp; Neel &nbsp;·&nbsp; Made with love</p>
+    </footer>
+
+  </div><!-- end #main-content -->
+
+  <script src="script.js"></script>
+</body>
+</html>
