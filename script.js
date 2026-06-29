@@ -17,7 +17,7 @@ const GOOGLE_SCRIPT_URL = '[YOUR_GOOGLE_APPS_SCRIPT_URL]';
    [WEDDING_DATE_PLACEHOLDER] — Update before publishing.
    Format: 'YYYY-MM-DDTHH:MM:SS' in local time.
    ============================================================ */
-const WEDDING_DATE = new Date('2027-02-14T17:00:00');
+const WEDDING_DATE = new Date('2027-01-10T17:00:00');
 
 /* ============================================================
    DOM READY

@@ -24,18 +24,25 @@ Search for the comment tags below in `index.html` and `script.js` to find every 
 |-----|----------------|
 | `[WEDDING_DATE_PLACEHOLDER]` | Date shown in the curtain, hero, details card, and footer |
 | `[WEDDING_TIME_PLACEHOLDER]` | Ceremony start time in the details card |
-| `[VENUE_NAME_PLACEHOLDER]` | Name of the venue |
-| `[VENUE_ADDRESS_PLACEHOLDER]` | Full address of the venue |
-| `[GOOGLE_MAPS_LINK_PLACEHOLDER]` | The `href` on the "Get Directions" button |
+| `[VENUE_NAME_PLACEHOLDER]` | Name of the main venue (Details section) |
+| `[VENUE_ADDRESS_PLACEHOLDER]` | Full address of the main venue |
+| `[GOOGLE_MAPS_LINK_PLACEHOLDER]` | The `href` on the Details "Get Directions" button |
+| `[GANESH_POOJA_VENUE_PLACEHOLDER]` | Name & address of Ganesh Pooja location |
+| `[GRAH_SHANTI_VENUE_PLACEHOLDER]` | Name & address of Grah Shanti location |
+| `[GARBA_VENUE_PLACEHOLDER]` | Name & address of Garba venue |
+| `[WEDDING_VENUE_PLACEHOLDER]` | Name & address of Wedding Ceremony venue |
+| `[GOOGLE_MAPS_GANESH_POOJA]` | Google Maps link for Ganesh Pooja venue |
+| `[GOOGLE_MAPS_GRAH_SHANTI]` | Google Maps link for Grah Shanti venue |
+| `[GOOGLE_MAPS_GARBA]` | Google Maps link for Garba venue |
+| `[GOOGLE_MAPS_WEDDING]` | Google Maps link for Wedding Ceremony venue |
 | `[CUSTOMIZE THIS TEXT]` | The love-story paragraph in the Story section |
-| `[CUSTOMIZE]` | Timeline events (times and descriptions) |
 
 In `script.js`, also update:
 
 ```js
-// Line ~19
-const WEDDING_DATE = new Date('2027-02-14T17:00:00');
-//                              ↑ change to your actual date/time
+// Line ~20
+const WEDDING_DATE = new Date('2027-01-10T17:00:00');
+//                              ↑ counts down to the Wedding Ceremony (Day Two, 5:00 PM)
 ```
 
 ### Replacing gallery photos
